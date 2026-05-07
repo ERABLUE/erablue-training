@@ -1,119 +1,49 @@
-// URL Library (Tetap Menggunakan URL yang Lama)
-const LIB_URL = "https://script.google.com/macros/s/AKfycbyijPTnQTlQXY4PuDdn6Ij8w0KSyTZB12iyybY0cRqZDF2mO-iRNPUQLfHPy0--f_I3Jg/exec";
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background-color: #f4f7f6; padding-bottom: 90px; }
 
-// URL Helper/Troubleshooting (Menggunakan URL yang Baru Saja Anda Kirim)
-const HELPER_URL = "https://script.google.com/macros/s/AKfycbyKDmQeViTbhVTu9PZX5XuaIvCbAv5lzurD2GWJOBvazwbCeWbhgQZauZh7yaCOyniE/exec";
+.header-container { background: #fff; padding: 15px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #0d47a1; position: sticky; top: 0; z-index: 100; }
+.logo-brand { height: 26px; }
+.main-title { font-size: 1.2rem; font-weight: 800; color: #0d47a1; }
+.section-title { font-size: 0.9rem; color: #666; text-transform: uppercase; margin-bottom: 15px; border-left: 4px solid #0d47a1; padding-left: 10px; }
 
-let masterLib = [];
-let masterHelper = [];
+.tab-content { padding: 20px 15px; max-width: 500px; margin: 0 auto; display: none; }
 
-// Fetch data saat web dibuka
-async function initData() {
-    try {
-        const [libRes, helpRes] = await Promise.all([
-            fetch(LIB_URL).then(r => r.json()),
-            fetch(HELPER_URL).then(r => r.json())
-        ]);
-        masterLib = libRes;
-        masterHelper = helpRes;
-        console.log("Data Berhasil Sinkron");
-    } catch (e) {
-        console.error("Gagal Sinkron:", e);
-    }
-}
-initData();
+.teknisi-full-container { position: relative; width: 100%; max-width: 280px; margin: 15px auto; }
+.teknisi-img { width: 100%; border-radius: 12px; display: block; }
+.k3-clickable-dot { position: absolute; width: 38px; height: 38px; background: #0d47a1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transform: translate(-50%, -50%); z-index: 5; }
 
-function bukaTab(evt, tabName) {
-    const tabcontent = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
-    const tablinks = document.getElementsByClassName("tab-link");
-    for (let i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.classList.add("active");
-    window.scrollTo(0, 0);
-}
+.navbar { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; display: flex; padding: 10px 0; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 1000; }
+.tab-link { background: none; border: none; color: #999; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; flex: 1; gap: 4px; }
+.tab-link.active { color: #0d47a1; font-weight: bold; }
+.tab-link i { font-size: 1.3rem; }
 
-// FUNGSI CARI LIBRARY (SMART LIBRARY)
-function cariLibrary() {
-    const kat = document.getElementById("libCategory").value;
-    const cari = document.getElementById("libSearch").value.toLowerCase().trim();
-    const resContainer = document.getElementById("libResult");
+.result-item { background: #fff; padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 6px solid #0d47a1; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.search-group { background: #fff; padding: 15px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+.search-input { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+.btn-action { background: #0d47a1; color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; }
 
-    const filtered = masterLib.filter(item => {
-        const matchKat = kat === "" || item.kategori.toUpperCase() === kat.toUpperCase();
-        const matchCari = item.kataKunci.includes(cari) || item.merk.toLowerCase().includes(cari) || item.seri.toLowerCase().includes(cari);
-        return matchKat && matchCari;
-    });
+.modal-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+.modal-content { background: #fff; width: 100%; max-width: 320px; padding: 20px; border-radius: 20px; text-align: center; position: relative; }
+.modal-img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 10px; margin: 15px 0; }
+.close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; color: #ccc; }
 
-    if (filtered.length === 0) {
-        resContainer.innerHTML = "<p style='text-align:center; padding:20px;'>❌ Data tidak ditemukan.</p>";
-        return;
-    }
-
-    resContainer.innerHTML = filtered.map(item => `
-        <div class="result-item">
-            <strong style="color:#0d47a1;">${item.merk} - ${item.seri}</strong><br>
-            <small>Kategori: ${item.kategori}</small>
-            <div style="display:flex; gap:8px; margin-top:10px;">
-                <a href="${item.linkPPT}" class="link-btn" style="background:#0d47a1; flex:1;" target="_blank">PPT MATERI</a>
-                <a href="${item.linkBook}" class="link-btn" style="background:#e65100; flex:1;" target="_blank">MANUAL BOOK</a>
-            </div>
-        </div>
-    `).join('');
-}
-
-// FUNGSI CARI ERROR (TROUBLESHOOTING)
-function cariError() {
-    const snInput = document.getElementById("helperSN").value.toLowerCase().trim();
-    const errInput = document.getElementById("helperError").value.toLowerCase().trim();
-    const resContainer = document.getElementById("helperResult");
-
-    if (masterHelper.length === 0) {
-        resContainer.innerHTML = "Menyinkronkan data...";
-        initData();
-        return;
-    }
-
-    const filtered = masterHelper.filter(item => {
-        // Mencocokkan Serial Number DAN Kode Error
-        const matchSN = snInput === "" || item.serialNumber.includes(snInput);
-        const matchErr = errInput === "" || item.kodeError.includes(errInput);
-        return matchSN && matchErr;
-    });
-
-    if (filtered.length === 0) {
-        resContainer.innerHTML = "<p style='text-align:center; padding:20px;'>❌ Solusi tidak ditemukan.</p>";
-        return;
-    }
-
-    resContainer.innerHTML = filtered.map(item => `
-        <div class="result-item" style="border-left: 6px solid #d32f2f;">
-            <div style="margin-bottom:8px;">
-                <span style="background:#d32f2f; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.7rem; font-weight:bold;">${item.merk}</span>
-                <span style="background:#eee; padding:2px 8px; border-radius:4px; font-size:0.7rem; margin-left:5px;">SN: ${item.serialNumber.toUpperCase()}</span>
-            </div>
-            <strong style="color:#d32f2f; font-size:1.1rem;">Error: ${item.kodeError.toUpperCase()}</strong><br>
-            <p style="font-weight:bold; margin-top:5px; color:#333;">Arti: ${item.artiKode}</p>
-            <div style="background:#fff9f9; padding:10px; border-radius:8px; margin-top:8px; border:1px solid #ffdada;">
-                <small style="color:#666; font-weight:bold;">SOLUSI:</small><br>
-                <p style="font-size:0.9rem; line-height:1.4;">${item.solusi}</p>
-            </div>
-        </div>
-    `).join('');
-}
-
-function toggleCard(id) {
-    const x = document.getElementById(id);
-    x.style.display = (x.style.display === "none") ? "block" : "none";
-}
-
-function showK3Modal(title, desc, imgSrc) {
-    document.getElementById('k3Modal').style.display = 'flex';
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalDesc').innerText = desc;
-    document.getElementById('modalImg').src = imgSrc;
-}
-
-function tutupK3Modal() {
-    document.getElementById('k3Modal').style.display = 'none';
-}
+/* CSS KHUSUS TAB RANK */
+.podium-wrapper { display: flex; align-items: flex-end; justify-content: center; gap: 10px; margin: 30px 0; height: 180px; }
+.podium-item { display: flex; flex-direction: column; align-items: center; flex: 1; max-width: 100px; }
+.podium-card { background: #fff; width: 100%; padding: 10px 5px; border-radius: 10px 10px 0 0; text-align: center; box-shadow: 0 -4px 10px rgba(0,0,0,0.05); border: 1px solid #ddd; height: 45px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+.podium-card span { font-size: 0.75rem; font-weight: bold; color: #333; display: block; animation: fadeEffect 0.5s ease; }
+.step { width: 100%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 1.5rem; border-radius: 0 0 8px 8px; }
+.gold .step { height: 100px; background: linear-gradient(#ffd700, #b8860b); }
+.silver .step { height: 70px; background: linear-gradient(#c0c0c0, #707070); }
+.bronze .step { height: 50px; background: linear-gradient(#cd7f32, #8b4513); }
+.rank-categories { display: flex; overflow-x: auto; gap: 8px; padding-bottom: 10px; margin-bottom: 15px; scrollbar-width: none; }
+.rank-categories::-webkit-scrollbar { display: none; }
+.cat-btn { padding: 8px 16px; border-radius: 20px; border: 1px solid #0d47a1; background: #fff; color: #0d47a1; white-space: nowrap; font-size: 0.75rem; font-weight: bold; transition: 0.3s; }
+.cat-btn.active { background: #0d47a1; color: #fff; }
+.rank-row { background: #fff; padding: 12px; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s; }
+.rank-number { width: 30px; font-weight: bold; color: #0d47a1; font-size: 0.9rem; }
+.rank-info { flex: 1; margin-left: 5px; }
+.rank-val { font-weight: bold; color: #333; font-size: 0.9rem; }
+.detail-box { font-size: 0.75rem; color: #666; margin-top: 5px; display: none; background: #f9f9f9; padding: 8px; border-radius: 6px; border-left: 3px solid #0d47a1; line-height: 1.4; animation: slideDown 0.3s ease; }
+@keyframes fadeEffect { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
