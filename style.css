@@ -1,0 +1,28 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background-color: #f4f7f6; padding-bottom: 90px; }
+
+.header-container { background: #fff; padding: 15px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #0d47a1; position: sticky; top: 0; z-index: 100; }
+.logo-brand { height: 26px; }
+.main-title { font-size: 1.2rem; font-weight: 800; color: #0d47a1; }
+.section-title { font-size: 0.9rem; color: #666; text-transform: uppercase; margin-bottom: 15px; border-left: 4px solid #0d47a1; padding-left: 10px; }
+
+.tab-content { padding: 20px 15px; max-width: 500px; margin: 0 auto; display: none; }
+
+.teknisi-full-container { position: relative; width: 100%; max-width: 280px; margin: 15px auto; }
+.teknisi-img { width: 100%; border-radius: 12px; display: block; }
+.k3-clickable-dot { position: absolute; width: 38px; height: 38px; background: #0d47a1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transform: translate(-50%, -50%); z-index: 5; }
+
+.navbar { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; display: flex; padding: 10px 0; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); z-index: 1000; }
+.tab-link { background: none; border: none; color: #999; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; flex: 1; gap: 4px; }
+.tab-link.active { color: #0d47a1; font-weight: bold; }
+.tab-link i { font-size: 1.3rem; }
+
+.result-item { background: #fff; padding: 15px; border-radius: 12px; margin-bottom: 12px; border-left: 6px solid #0d47a1; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.search-group { background: #fff; padding: 15px; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+.search-input { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+.btn-action { background: #0d47a1; color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; }
+
+.modal-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+.modal-content { background: #fff; width: 100%; max-width: 320px; padding: 20px; border-radius: 20px; text-align: center; position: relative; }
+.modal-img { width: 100%; max-height: 250px; object-fit: contain; border-radius: 10px; margin: 15px 0; }
+.close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.8rem; color: #ccc; }
