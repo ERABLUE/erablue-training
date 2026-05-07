@@ -66,9 +66,40 @@
 
     <div id="Leaderboard" class="tab-content" style="display:none;">
         <h2 class="section-title">Leaderboard</h2>
-        <div class="top-three-container">
-            <div class="top-card gold">1. Teknisi A</div>
+        
+        <div class="podium-wrapper">
+            <div class="podium-item silver">
+                <div class="podium-card" id="rank2">
+                    <span class="rank-id">--</span>
+                    <span class="rank-score" style="display:none;">--</span>
+                </div>
+                <div class="step">2</div>
+            </div>
+            <div class="podium-item gold">
+                <div class="podium-card" id="rank1">
+                    <span class="rank-id">--</span>
+                    <span class="rank-score" style="display:none;">--</span>
+                </div>
+                <div class="step">1</div>
+            </div>
+            <div class="podium-item bronze">
+                <div class="podium-card" id="rank3">
+                    <span class="rank-id">--</span>
+                    <span class="rank-score" style="display:none;">--</span>
+                </div>
+                <div class="step">3</div>
+            </div>
         </div>
+
+        <div class="rank-categories">
+            <button class="cat-btn active" onclick="setRankCategory('totalUnit', this)">Keseluruhan</button>
+            <button class="cat-btn" onclick="setRankCategory('ac', this)">AC</button>
+            <button class="cat-btn" onclick="setRankCategory('kulkas', this)">Kulkas</button>
+            <button class="cat-btn" onclick="setRankCategory('tv', this)">TV</button>
+            <button class="cat-btn" onclick="setRankCategory('mesinCuci', this)">Mesin Cuci</button>
+        </div>
+
+        <div id="rankList" class="rank-list-container"></div>
     </div>
 
     <div id="Personal" class="tab-content" style="display:none;">
