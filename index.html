@@ -191,7 +191,12 @@
                 </div>
                 <h4 style="margin-top:20px; font-size:0.9rem; border-bottom:1px solid #eee; padding-bottom:10px; color:#555;">Daftar Sertifikat</h4>
                 <div id="certList" class="cert-container"></div>
-                <button class="btn-action logout-btn" onclick="logout()" style="margin-top:25px; background:#d32f2f;">Logout</button>
+                
+                <button id="btnChatAdmin" class="btn-action" onclick="bukaChatAdmin()" style="margin-top:20px; background:#f59e0b; width:100%; display:none;">
+                    <i class="fa-solid fa-comments"></i> Chat Admin Kantor
+                </button>
+
+                <button class="btn-action logout-btn" onclick="logout()" style="margin-top:15px; background:#d32f2f; width:100%;">Logout</button>
             </div>
         </div>
     </div>
@@ -212,6 +217,12 @@
             <p id="modalDesc"></p>
         </div>
     </div>
+
+    <script type="text/javascript">
+      window.$crisp=[];window.CRISP_WEBSITE_ID="c9bb6c18-95c2-4e50-9fda-822a02a1a5c6";
+      (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+      $crisp.push(["do", "chat:hide"]);
+    </script>
 
     <script src="script.js"></script>
 </body>
