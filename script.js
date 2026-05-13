@@ -146,12 +146,9 @@ function cariLibrary() {
     });
 
     document.getElementById("libResult").innerHTML = filtered.map(item => {
-        // Cek apakah link ada dan bukan tanda "-"
         const hasPPT = item.linkPPT && item.linkPPT !== "-";
         const hasBook = item.linkBook && item.linkBook !== "-";
 
-        // Jika ada link, tampilkan tombol. Jika tidak (berisi "-"), tampilkan kotak kosong (visibility:hidden) 
-        // agar posisi tombol lainnya tetap konsisten di tempatnya.
         const btnPPT = hasPPT 
             ? `<a href="${item.linkPPT}" style="background:#0d47a1; width:48%; color:white; padding:10px; border-radius:8px; text-align:center; text-decoration:none;" target="_blank">PPT</a>` 
             : `<div style="width:48%; visibility:hidden;"></div>`;
@@ -222,6 +219,22 @@ function showProfile(data) {
     document.getElementById('profIdStaff').innerText = data.idStaff;
     document.getElementById('profIdEra').innerText = data.idErajaya;
     document.getElementById('profGudang').innerText = data.gudang;
+
+    // --- INTEGRASI CRISP: Kirim data teknisi ke admin ---
+    if (typeof $crisp !== 'undefined') {
+        $crisp.push(["set", "user:nickname", [data.name]]);
+        $crisp.push(["set", "user:email", [data.idStaff + "@erablue.id"]]);
+        $crisp.push(["set", "session:data", [[
+            ["ID_Staff", data.idStaff],
+            ["Gudang", data.gudang],
+            ["ID_Erajaya", data.idErajaya]
+        ]]]);
+        
+        // Tampilkan tombol chat admin yang ada di HTML
+        const btnChat = document.getElementById('btnChatAdmin');
+        if(btnChat) btnChat.style.display = 'block';
+    }
+
     const certBox = document.getElementById('certList');
     certBox.innerHTML = "";
     data.certs.forEach((link, i) => {
@@ -234,4 +247,20 @@ function showProfile(data) {
 function logout() {
     document.getElementById('profileView').style.display = 'none';
     document.getElementById('loginView').style.display = 'block';
+
+    // --- INTEGRASI CRISP: Reset sesi dan sembunyikan tombol chat ---
+    if (typeof $crisp !== 'undefined') {
+        $crisp.push(["do", "session:reset"]);
+        $crisp.push(["do", "chat:hide"]);
+        const btnChat = document.getElementById('btnChatAdmin');
+        if(btnChat) btnChat.style.display = 'none';
+    }
+}
+
+// Fungsi pendukung untuk tombol Chat Admin Kantor
+function bukaChatAdmin() {
+    if (typeof $crisp !== 'undefined') {
+        $crisp.push(['do', 'chat:show']);
+        $crisp.push(['do', 'chat:open']);
+    }
 }
