@@ -94,37 +94,60 @@ function toggleDetail(id) {
 // UPGRADE FUNGSI HELPER (TETAP SAMA)
 // ==========================================
 function cariError() {
-    const keyword = document.getElementById("helperSN").value.toLowerCase().trim();
-    const errInput = document.getElementById("helperError").value.toLowerCase().trim();
-    const container = document.getElementById("helperResult");
-
-    const filtered = masterHelper.filter(item => {
-        const combinedString = (item.kategori + " " + item.merk + " " + item.serialNumber).toLowerCase();
-        const matchKeyword = keyword === "" || combinedString.includes(keyword);
-        const matchErr = errInput === "" || item.kodeError.toLowerCase().includes(errInput);
-        return matchKeyword && matchErr;
-    });
-
-    if (filtered.length === 0) {
-        container.innerHTML = "<p style='text-align:center; padding:20px;'>❌ Data tidak ditemukan.</p>";
-        return;
+    // --- FITUR ANIMASI LOADING (START) ---
+    const btn = document.getElementById("btnCariError");
+    let spinner = null;
+    if (btn) {
+        spinner = btn.querySelector(".loading-icon");
+        if (spinner) spinner.style.display = "inline-block";
+        btn.disabled = true;
     }
 
-    container.innerHTML = filtered.map(item => `
-        <div class="result-item" style="border-left: 6px solid #d32f2f;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <span style="background:#0d47a1; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.7rem; font-weight:bold; text-transform:uppercase;">${item.kategori}</span>
-                <span style="font-weight:bold; color:#0d47a1; font-size:0.85rem;">${item.merk}</span>
+    // Menggunakan setTimeout agar browser sempat merender animasi loading sebelum eksekusi filter yang berat
+    setTimeout(() => {
+        const keyword = document.getElementById("helperSN").value.toLowerCase().trim();
+        const errInput = document.getElementById("helperError").value.toLowerCase().trim();
+        const container = document.getElementById("helperResult");
+
+        const filtered = masterHelper.filter(item => {
+            const combinedString = (item.kategori + " " + item.merk + " " + item.serialNumber).toLowerCase();
+            const matchKeyword = keyword === "" || combinedString.includes(keyword);
+            const matchErr = errInput === "" || item.kodeError.toLowerCase().includes(errInput);
+            return matchKeyword && matchErr;
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = "<p style='text-align:center; padding:20px;'>❌ Data tidak ditemukan.</p>";
+            // --- FITUR ANIMASI LOADING (STOP) ---
+            if (btn) {
+                if (spinner) spinner.style.display = "none";
+                btn.disabled = false;
+            }
+            return;
+        }
+
+        container.innerHTML = filtered.map(item => `
+            <div class="result-item" style="border-left: 6px solid #d32f2f;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="background:#0d47a1; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.7rem; font-weight:bold; text-transform:uppercase;">${item.kategori}</span>
+                    <span style="font-weight:bold; color:#0d47a1; font-size:0.85rem;">${item.merk}</span>
+                </div>
+                <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">Nomor Seri: ${item.serialNumber.toUpperCase()}</div>
+                <strong style="color:#d32f2f; font-size:1.1rem;">Error: ${item.kodeError.toUpperCase()}</strong><br>
+                <p style="font-weight:bold; margin-top:5px; color:#333;">Arti: ${item.artiKode}</p>
+                <div style="background:#fff9f9; padding:10px; border-radius:8px; margin-top:8px; border:1px solid #ffdada;">
+                    <small style="color:#666; font-weight:bold;">SOLUSI:</small><br>
+                    <p style="font-size:0.9rem; line-height:1.4;">${item.solusi}</p>
+                </div>
             </div>
-            <div style="font-size:0.8rem; color:#666; margin-bottom:5px;">Nomor Seri: ${item.serialNumber.toUpperCase()}</div>
-            <strong style="color:#d32f2f; font-size:1.1rem;">Error: ${item.kodeError.toUpperCase()}</strong><br>
-            <p style="font-weight:bold; margin-top:5px; color:#333;">Arti: ${item.artiKode}</p>
-            <div style="background:#fff9f9; padding:10px; border-radius:8px; margin-top:8px; border:1px solid #ffdada;">
-                <small style="color:#666; font-weight:bold;">SOLUSI:</small><br>
-                <p style="font-size:0.9rem; line-height:1.4;">${item.solusi}</p>
-            </div>
-        </div>
-    `).join('');
+        `).join('');
+
+        // --- FITUR ANIMASI LOADING (STOP) ---
+        if (btn) {
+            if (spinner) spinner.style.display = "none";
+            btn.disabled = false;
+        }
+    }, 50);
 }
 
 function bukaTab(evt, tabName) {
@@ -137,36 +160,53 @@ function bukaTab(evt, tabName) {
 }
 
 function cariLibrary() {
-    const kat = document.getElementById("libCategory").value;
-    const cari = document.getElementById("libSearch").value.toLowerCase().trim();
-    const filtered = masterLib.filter(item => {
-        const matchKat = kat === "" || item.kategori.toUpperCase() === kat.toUpperCase();
-        const matchCari = item.kataKunci.includes(cari) || item.merk.toLowerCase().includes(cari) || item.seri.toLowerCase().includes(cari);
-        return matchKat && matchCari;
-    });
+    // --- FITUR ANIMASI LOADING (START) ---
+    const btn = document.getElementById("btnCariLibrary");
+    let spinner = null;
+    if (btn) {
+        spinner = btn.querySelector(".loading-icon");
+        if (spinner) spinner.style.display = "inline-block";
+        btn.disabled = true;
+    }
 
-    document.getElementById("libResult").innerHTML = filtered.map(item => {
-        const hasPPT = item.linkPPT && item.linkPPT !== "-";
-        const hasBook = item.linkBook && item.linkBook !== "-";
+    setTimeout(() => {
+        const kat = document.getElementById("libCategory").value;
+        const cari = document.getElementById("libSearch").value.toLowerCase().trim();
+        const filtered = masterLib.filter(item => {
+            const matchKat = kat === "" || item.kategori.toUpperCase() === kat.toUpperCase();
+            const matchCari = item.kataKunci.includes(cari) || item.merk.toLowerCase().includes(cari) || item.seri.toLowerCase().includes(cari);
+            return matchKat && matchCari;
+        });
 
-        const btnPPT = hasPPT 
-            ? `<a href="${item.linkPPT}" style="background:#0d47a1; width:48%; color:white; padding:10px; border-radius:8px; text-align:center; text-decoration:none;" target="_blank">PPT</a>` 
-            : `<div style="width:48%; visibility:hidden;"></div>`;
+        document.getElementById("libResult").innerHTML = filtered.map(item => {
+            const hasPPT = item.linkPPT && item.linkPPT !== "-";
+            const hasBook = item.linkBook && item.linkBook !== "-";
 
-        const btnBook = hasBook 
-            ? `<a href="${item.linkBook}" style="background:#e65100; width:48%; color:white; padding:10px; border-radius:8px; text-align:center; text-decoration:none;" target="_blank">BOOK</a>` 
-            : `<div style="width:48%; visibility:hidden;"></div>`;
+            const btnPPT = hasPPT 
+                ? `<a href="${item.linkPPT}" style="background:#0d47a1; width:48%; color:white; padding:10px; border-radius:8px; text-align:center; text-decoration:none;" target="_blank">PPT</a>` 
+                : `<div style="width:48%; visibility:hidden;"></div>`;
 
-        return `
-            <div class="result-item">
-                <strong style="color:#0d47a1;">${item.merk} - ${item.seri}</strong><br>
-                <div style="display:flex; gap:8px; margin-top:10px; justify-content: space-between;">
-                    ${btnPPT}
-                    ${btnBook}
+            const btnBook = hasBook 
+                ? `<a href="${item.linkBook}" style="background:#e65100; width:48%; color:white; padding:10px; border-radius:8px; text-align:center; text-decoration:none;" target="_blank">BOOK</a>` 
+                : `<div style="width:48%; visibility:hidden;"></div>`;
+
+            return `
+                <div class="result-item">
+                    <strong style="color:#0d47a1;">${item.merk} - ${item.seri}</strong><br>
+                    <div style="display:flex; gap:8px; margin-top:10px; justify-content: space-between;">
+                        ${btnPPT}
+                        ${btnBook}
+                    </div>
                 </div>
-            </div>
-        `;
-    }).join('');
+            `;
+        }).join('');
+
+        // --- FITUR ANIMASI LOADING (STOP) ---
+        if (btn) {
+            if (spinner) spinner.style.display = "none";
+            btn.disabled = false;
+        }
+    }, 50);
 }
 
 function toggleCard(id) {
@@ -204,11 +244,31 @@ async function handleLogin() {
     const user = document.getElementById('loginId').value.trim();
     const pass = document.getElementById('loginPass').value.trim();
     if(!user || !pass) return alert("Isi ID dan Password!");
-    const res = await fetch(USER_URL, {
-        method: "POST",
-        body: JSON.stringify({ action: "login", userId: user, password: pass })
-    }).then(r => r.json());
-    if(res.status === "success") { showProfile(res.data); } else { alert(res.message); }
+
+    // --- FITUR ANIMASI LOADING (START) ---
+    const btn = document.getElementById("btnLogin");
+    let spinner = null;
+    if (btn) {
+        spinner = btn.querySelector(".loading-icon");
+        if (spinner) spinner.style.display = "inline-block";
+        btn.disabled = true;
+    }
+
+    try {
+        const res = await fetch(USER_URL, {
+            method: "POST",
+            body: JSON.stringify({ action: "login", userId: user, password: pass })
+        }).then(r => r.json());
+        if(res.status === "success") { showProfile(res.data); } else { alert(res.message); }
+    } catch (error) {
+        console.error(error);
+    } finally {
+        // --- FITUR ANIMASI LOADING (STOP) ---
+        if (btn) {
+            if (spinner) spinner.style.display = "none";
+            btn.disabled = false;
+        }
+    }
 }
 
 function showProfile(data) {
@@ -260,7 +320,28 @@ function logout() {
 // Fungsi pendukung untuk tombol Chat Admin Kantor
 function bukaChatAdmin() {
     if (typeof $crisp !== 'undefined') {
+        // --- FITUR ANIMASI LOADING (START) ---
+        const btn = document.getElementById("btnChatAdmin");
+        let spinner = null;
+        let defaultIcon = null;
+        if (btn) {
+            spinner = btn.querySelector(".loading-icon");
+            defaultIcon = btn.querySelector(".icon-default");
+            if (spinner) spinner.style.display = "inline-block";
+            if (defaultIcon) defaultIcon.style.display = "none";
+            btn.disabled = true;
+        }
+
         $crisp.push(['do', 'chat:show']);
         $crisp.push(['do', 'chat:open']);
+
+        // Sembunyikan kembali loading setelah 1.5 detik karena Crisp chat langsung terbuka
+        setTimeout(() => {
+            if (btn) {
+                if (spinner) spinner.style.display = "none";
+                if (defaultIcon) defaultIcon.style.display = "inline-block";
+                btn.disabled = false;
+            }
+        }, 1500);
     }
 }
