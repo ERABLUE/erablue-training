@@ -219,3 +219,21 @@ body { background-color: #f8fafc; padding-bottom: 100px; color: #334155; }
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* ====================================================================== */
+/* --- UTILITY CLASS UNTUK FITUR UTAMA: ANIMASI LOADING PADA TOMBOL ---   */
+/* ====================================================================== */
+
+.loading-icon {
+    display: none;
+    margin-right: 8px;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Mengurangi opacity tombol sedikit saat loading (disabled) agar user tahu tombol tidak bisa diklik */
+.btn-action:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none !important;
+}
