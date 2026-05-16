@@ -107,7 +107,9 @@
                 <option value="MESIN CUCI">MESIN CUCI</option>
             </select>
             <input type="text" id="libSearch" class="search-input" placeholder="Cari Merk atau Seri (Contoh: LG)">
-            <button class="btn-action" onclick="cariLibrary()">Cari Dokumen</button>
+            <button id="btnCariLibrary" class="btn-action" onclick="cariLibrary()">
+                <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Cari Dokumen
+            </button>
         </div>
         <div id="libResult" class="result-box"></div>
     </div>
@@ -117,7 +119,9 @@
         <div class="search-group">
             <input type="text" id="helperSN" class="search-input" placeholder="Cari Kategori/Merk/Serial (Contoh: AC Midea)">
             <input type="text" id="helperError" class="search-input" placeholder="Input Kode Error (Contoh: C4)">
-            <button class="btn-action" onclick="cariError()">Cari Solusi</button>
+            <button id="btnCariError" class="btn-action" onclick="cariError()">
+                <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Cari Solusi
+            </button>
         </div>
         <div id="helperResult" class="result-box"></div>
     </div>
@@ -164,7 +168,9 @@
             <div class="auth-container">
                 <input type="text" id="loginId" class="search-input" placeholder="ID Staff / ID Erajaya">
                 <input type="password" id="loginPass" class="search-input" placeholder="Password">
-                <button class="btn-action" onclick="handleLogin()">Login</button>
+                <button id="btnLogin" class="btn-action" onclick="handleLogin()">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Login
+                </button>
                 <p style="text-align:center; margin-top:15px; font-size:0.8rem; color:#666;">
                     Belum punya password? <a href="javascript:void(0)" onclick="toggleAuthMode('signup')" style="color:#0d47a1; font-weight:bold; text-decoration: none;">Sign In Sekarang</a>
                 </p>
@@ -193,7 +199,7 @@
                 <div id="certList" class="cert-container"></div>
                 
                 <button id="btnChatAdmin" class="btn-action" onclick="bukaChatAdmin()" style="margin-top:20px; background:#f59e0b; width:100%; display:none;">
-                    <i class="fa-solid fa-comments"></i> Chat Admin Kantor
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i><i class="fa-solid fa-comments icon-default"></i> Chat Admin Kantor
                 </button>
 
                 <button class="btn-action logout-btn" onclick="logout()" style="margin-top:15px; background:#d32f2f; width:100%;">Logout</button>
