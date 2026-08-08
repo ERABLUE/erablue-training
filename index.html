@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Technical ERABLUE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header-container">
+        <img src="asset/dashboard/Logo/Logo_ERABLUE.webp" alt="Logo ERABLUE" class="logo-brand">
+        <h1 class="main-title">Technical ERABLUE</h1>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- TAB HOME                                                      -->
+    <!-- ============================================================ -->
+    <div id="Dashboard" class="tab-content" style="display: block;">
+        <h2 class="section-title">Himbauan & Informasi Operasional</h2>
+        
+        <div class="himbauan-statis">
+            <img src="asset/dashboard/Himbawan awal/TROUBLESHOOT AC.webp" alt="Troubleshoot AC" class="banner-statis">
+            <div class="himbauan-content">
+                <p class="himbauan-desc">Panduan ini membantu kita menemukan dan mengatasi masalah pada unit AC setelah pemasangan unit baru.</p>
+                <p class="himbauan-motto"><em>Komunikasi baik, Kerja teliti Dan Hasil memuaskan.</em></p>
+                
+                <div class="himbauan-list">
+                    <strong>Cheklist setelah pemasangan</strong>
+                    <ul>
+                        <li>Indoor & outdoor terpasang kuat dan rata</li>
+                        <li>Pipa refrigant terpasang dengan rapih & aesthetic</li>
+                        <li>Vakum minimal 15 menit & pastikan tidak ada kebocoran</li>
+                        <li>Saluran drain lancar</li>
+                        <li>Listrik normal & grounding aman</li>
+                        <li>Uji fungsi (COOL) & pastikan AC dingin optimal.</li>
+                    </ul>
+                </div>
+
+                <div class="himbauan-tips">
+                    <strong>Tips sukses dilapangan</strong>
+                    <ul>
+                        <li>Utamakan Keselamatan</li>
+                        <li>Komunikasi dengan baik</li>
+                        <li>Periksa dengan teliti</li>
+                        <li>Kerja rapi = hasil profesional.</li>
+                    </ul>
+                </div>
+
+                <div class="himbauan-footer">
+                    <p>Kerja kita kenyamanan pelanggan!</p>
+                    <p>Terimakasih atas kerja keras dan dedikasi team.</p>
+                    <p class="slogan">KITA BISA, KITA HEBAT! ✊🏻</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-box" onclick="toggleCard('detailSeragam')">
+            <h3 class="card-title">Standar Uniform & Penampilan</h3>
+            <span class="toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div id="detailSeragam" class="dropdown-detail" style="display: none;">
+            <p class="card-desc">Pastikan seragam rapi sesuai standar profesionalitas Erablue.</p>
+            <div class="teknisi-full-container">
+                <img src="asset/dashboard/kelengkapan_seragam/Foto_SOP_Seragam.webp" alt="SOP" class="teknisi-img">
+                <div class="k3-clickable-dot" onclick="showK3Modal('Rambut', 'Rambut rapi tidak menutupi mata.', 'asset/dashboard/kelengkapan_seragam/Foto_SOP_Seragam_Rambut.webp')" style="top: 15%; left: 50%;">
+                    <i class="fa-solid fa-head-side-mask"></i>
+                </div>
+                <div class="k3-clickable-dot" onclick="showK3Modal('Atribut', 'Seragam bersih dan logo terlihat jelas.', 'asset/dashboard/kelengkapan_seragam/Foto_SOP_Seragam_Logo.webp')" style="top: 35%; left: 40%;">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+                <div class="k3-clickable-dot" onclick="showK3Modal('Sepatu', 'Gunakan sepatu safety standar.', 'asset/dashboard/kelengkapan_seragam/Foto_SOP_Seragam_Sepatu.webp')" style="top: 85%; left: 50%;">
+                    <i class="fa-solid fa-shoe-prints"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-box" onclick="toggleCard('detailMotor')">
+            <h3 class="card-title">Standar Kesiapan Kendaraan</h3>
+            <span class="toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </div>
+        <div id="detailMotor" class="dropdown-detail" style="display: none;">
+            <p class="card-desc">Pastikan bracket motor aman dan penyusunan unit sesuai standar SOP.</p>
+            <div class="teknisi-full-container">
+                <img src="asset/dashboard/kesiapan_motor/Kesiapan_motor.webp" alt="SOP Motor" class="teknisi-img">
+                <div class="k3-clickable-dot" onclick="showK3Modal('Penyusunan Unit', 'Penyusunan unit di motor. Pastikan terikat kuat dengan tali pengaman.', 'asset/dashboard/kesiapan_motor/Kesiapan_motor3.webp')" style="top: 25%; left: 25%;">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+                <div class="k3-clickable-dot" onclick="showK3Modal('Bracket Belakang', 'Besi penyanggah untuk meletakan unit seperti AC and TV.', 'asset/dashboard/kesiapan_motor/Kesiapan_motor1.webp')" style="top: 55%; left: 35%;">
+                    <i class="fa-solid fa-pallet"></i>
+                </div>
+                <div class="k3-clickable-dot" onclick="showK3Modal('Mounting Bracket', 'Pemegang bracket agar berpegang kuat dengan body motor.', 'asset/dashboard/kesiapan_motor/Kesiapan_motor2.webp')" style="top: 75%; left: 55%;">
+                    <i class="fa-solid fa-link"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB LIBRARY (Smart Library + Troubleshooting Helper)          -->
+    <!-- Digabung jadi 1 tab dengan toggle ala sheet Excel, supaya     -->
+    <!-- slot nav bawah yang tadinya dipakai Helper bisa dipindah ke   -->
+    <!-- tab baru LEADER.                                              -->
+    <!-- ============================================================ -->
+    <div id="SmartLibrary" class="tab-content" style="display:none;">
+
+        <div class="excel-tab-toggle">
+            <button id="libSubtabBtnLibrary" class="excel-tab-btn active" onclick="bukaLibrarySubtab('library')">Smart Library</button>
+            <button id="libSubtabBtnHelper" class="excel-tab-btn" onclick="bukaLibrarySubtab('helper')">Troubleshooting Helper</button>
+        </div>
+
+        <!-- PANEL: Smart Library -->
+        <div id="panelSmartLibrary">
+            <div class="search-group">
+                <select id="libCategory" class="search-input">
+                    <option value="">Semua Kategori</option>
+                    <!-- Diisi dinamis oleh JS dari GAS -->
+                </select>
+                <input type="text" id="libSearch" class="search-input" placeholder="Cari Merk atau Seri (Contoh: LG)">
+                <button id="btnCariLibrary" class="btn-action" onclick="cariLibrary()">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Cari Dokumen
+                </button>
+            </div>
+            <div id="libResult" class="result-box"></div>
+        </div>
+
+        <!-- PANEL: Troubleshooting Helper -->
+        <div id="panelHelper" style="display:none;">
+            <div class="search-group">
+                <input type="text" id="helperSN" class="search-input" placeholder="Kategori / Merk / Seri (Contoh: Midea)">
+                <input type="text" id="helperError" class="search-input" placeholder="Kode Error (Contoh: E1)">
+                <button id="btnCariError" class="btn-action" onclick="cariError()">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Cari Solusi
+                </button>
+            </div>
+            <div id="helperResult" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB VIDEO                                                     -->
+    <!-- ============================================================ -->
+    <div id="VideoYtTab" class="tab-content" style="display:none;">
+        <h2 class="section-title">Video Edukasi & Teknik</h2>
+        
+        <div class="main-video-player-wrapper">
+            <div class="video-iframe-responsive">
+                <iframe id="mainYoutubePlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="main-video-details-box">
+                <h3 id="mainVideoTitle">Memuat video...</h3>
+                <p id="mainVideoDesc"></p>
+            </div>
+        </div>
+
+        <div class="search-group">
+            <select id="videoCategorySelect" class="search-input" onchange="filterDaftarVideo()">
+                <option value="">Semua Kategori</option>
+                <!-- Diisi dinamis oleh JS dari GAS -->
+            </select>
+            <input type="text" id="videoSearchInput" class="search-input" placeholder="Cari judul video..." oninput="filterDaftarVideo()">
+        </div>
+
+        <div id="videoListContainer"></div>
+
+        <!-- Diskusi / Komentar -->
+        <div class="discussion-section-panel" style="margin-top: 20px;">
+            <div class="discussion-header-title">
+                <i class="fa-solid fa-comments"></i>
+                Diskusi (<span id="commentCount">0</span>)
+            </div>
+
+            <div id="videoCommentLoginNotice" class="comment-login-notice-box">
+                🔒 Login di tab <strong>User</strong> untuk ikut berdiskusi.
+            </div>
+
+            <div id="videoCommentForm" class="comment-input-form-group" style="display:none;">
+                <textarea id="inputIsiKomentar" class="comment-textarea-field" placeholder="Tulis diskusi atau pertanyaan..."></textarea>
+                <button id="btnKirimKomentar" class="btn-action" onclick="kirimKomentarTeknisi()">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Kirim
+                </button>
+            </div>
+
+            <div id="videoCommentsList" class="comments-list-scroll-box"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB RANK / LEADERBOARD                                       -->
+    <!-- ============================================================ -->
+    <div id="Leaderboard" class="tab-content" style="display:none;">
+
+        <!-- Header Leaderboard + Board Toggle (tersembunyi, tidak ada panah) -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <div class="board-toggle-wrapper">
+                <h2 class="section-title board-toggle-trigger" id="boardToggleTitle" onclick="toggleBoardMenu()" style="cursor:pointer; user-select:none; margin-bottom:0;">Leaderboard</h2>
+                <div id="boardDropdownMenu" class="board-dropdown-menu" style="display:none;">
+                    <div class="board-option" onclick="setBoardMode('leaderboard')">🏆 Leaderboard</div>
+                    <div class="board-option" onclick="setBoardMode('bottomboard')">📉 Bottom Board</div>
+                </div>
+            </div>
+            <span id="update-info"></span>
+        </div>
+
+        <!-- Filter baris: Periode + Gudang sejajar -->
+        <div class="rank-filter-row">
+            <select id="rankPeriodeSelect" class="rank-filter-select" onchange="onPeriodeChange()">
+                <option value="">Memuat...</option>
+            </select>
+            <select id="rankGudangSelect" class="rank-filter-select" onchange="onGudangChange()">
+                <option value="">Semua Gudang</option>
+            </select>
+        </div>
+
+        <!-- Podium Top 3 -->
+        <div class="podium-wrapper">
+            <div class="podium-item silver">
+                <div class="podium-card" id="rank2">
+                    <span class="rank-id">--</span>
+                    <span class="rank-score" style="display:none;">--</span>
+                </div>
+                <div class="step">2</div>
+            </div>
+            <div class="podium-item gold">
+                <div class="podium-card" id="rank1">
+                    <span class="rank-id">--</span>
+                    <span class="rank-score" style="display:none;">--</span>
+                </div>
+                <div class="step">1</div>
+            </div>
+            <div class="podium-item bronze">
+                <div class="podium-card" id="rank3">
+                    <span class="rank-id">--</span>
+                    <span class="rank-score" style="display:none;">--</span>
+                </div>
+                <div class="step">3</div>
+            </div>
+        </div>
+
+        <!-- Kategori Unit: scroll horizontal dengan tombol panah -->
+        <div class="rank-cat-slider-wrapper">
+            <button class="cat-arrow-btn" onclick="scrollCatLeft()"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="rank-categories" id="rankCatScroll">
+                <button class="cat-btn active" data-cat="totalUnit" onclick="setRankCategory('totalUnit', this)">Keseluruhan</button>
+                <button class="cat-btn" data-cat="ac" onclick="setRankCategory('ac', this)">AC</button>
+                <button class="cat-btn" data-cat="cctv" onclick="setRankCategory('cctv', this)">CCTV</button>
+                <button class="cat-btn" data-cat="kulkas" onclick="setRankCategory('kulkas', this)">Kulkas</button>
+                <button class="cat-btn" data-cat="tv" onclick="setRankCategory('tv', this)">TV</button>
+                <button class="cat-btn" data-cat="mesinCuci" onclick="setRankCategory('mesinCuci', this)">Mesin Cuci</button>
+                <button class="cat-btn" data-cat="airCooler" onclick="setRankCategory('airCooler', this)">Air Cooler</button>
+                <button class="cat-btn" data-cat="freezer" onclick="setRankCategory('freezer', this)">Freezer</button>
+                <button class="cat-btn" data-cat="speaker" onclick="setRankCategory('speaker', this)">Speaker</button>
+                <button class="cat-btn" data-cat="waterHeater" onclick="setRankCategory('waterHeater', this)">Water Heater</button>
+                <button class="cat-btn" data-cat="dispenser" onclick="setRankCategory('dispenser', this)">Dispenser</button>
+            </div>
+            <button class="cat-arrow-btn" onclick="scrollCatRight()"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div id="rankList" class="rank-list-container"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB LEADER (khusus posisi Leader ke atas, selain Staff)       -->
+    <!-- ============================================================ -->
+    <div id="Leader" class="tab-content" style="display:none;">
+        <h2 class="section-title">Leader</h2>
+
+        <!-- Sheet-picker ala tab Excel -->
+        <div class="excel-tab-toggle excel-tab-toggle-3">
+            <button id="leaderSubtabBtnFotoTms" class="excel-tab-btn active" onclick="bukaLeaderSubtab('fototms')">Foto TMS</button>
+            <button id="leaderSubtabBtnSertificate" class="excel-tab-btn" onclick="bukaLeaderSubtab('sertificate')">Sertificate</button>
+            <button id="leaderSubtabBtnLiveSkill" class="excel-tab-btn" onclick="bukaLeaderSubtab('liveofskill')">Live of Skill</button>
+        </div>
+
+        <!-- PANEL: Foto TMS -->
+        <div id="panelFotoTms">
+            <div class="rank-filter-row" style="margin-bottom:16px;">
+                <select id="leaderGudangSelect" class="rank-filter-select" onchange="onFotoTMSGudangChange()">
+                    <option value="">Semua Gudang (20 Terbaru)</option>
+                    <!-- Diisi dinamis oleh JS -->
+                </select>
+            </div>
+            <div id="fotoTmsListContainer"></div>
+            <p id="fotoTmsKosong" style="text-align:center; color:#888; font-size:0.85rem; display:none; padding:20px 0;">Belum ada temuan kesalahan foto TMS.</p>
+        </div>
+
+        <!-- PANEL: Sertificate -->
+        <div id="panelSertificate" style="display:none;">
+            <p class="leader-panel-hint">Daftar staff di gudang kamu beserta jumlah sertifikat yang sudah dimiliki. Tap ID untuk lihat/download.</p>
+            <div class="search-group" style="margin-bottom:12px;">
+                <input type="text" id="sertificateSearchInput" class="search-input" placeholder="Cari ID atau nama staff..." oninput="renderSertificateList()">
+            </div>
+            <div id="sertificateListContainer"></div>
+            <p id="sertificateKosong" style="text-align:center; color:#888; font-size:0.85rem; display:none; padding:20px 0;">Belum ada data staff di gudang ini.</p>
+        </div>
+
+        <!-- PANEL: Live of Skill -->
+        <div id="panelLiveSkill" style="display:none;">
+            <p class="leader-panel-hint">Daftar staff yang <strong>belum</strong> menyelesaikan semua kuis uji kemampuan. Angka di kanan = jumlah kuis yang belum dikerjakan.</p>
+            <div id="liveSkillListContainer"></div>
+            <p id="liveSkillKosong" style="text-align:center; color:#888; font-size:0.85rem; display:none; padding:20px 0;">🎉 Semua staff di gudang ini sudah menyelesaikan semua kuis.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB PERSONAL / AKUN                                          -->
+    <!-- ============================================================ -->
+    <div id="Personal" class="tab-content" style="display:none;">
+        <h2 class="section-title">Akun Saya</h2>
+
+        <!-- LOGIN VIEW -->
+        <div id="loginView">
+            <div class="auth-container">
+                <input type="text" id="loginId" class="search-input" placeholder="ID Staff / ID Erajaya" onkeydown="if(event.key==='Enter'){event.preventDefault(); handleLogin();}">
+                <input type="password" id="loginPass" class="search-input" placeholder="Password" onkeydown="if(event.key==='Enter'){event.preventDefault(); handleLogin();}">
+                <button id="btnLogin" class="btn-action" onclick="handleLogin()">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Login
+                </button>
+
+                <!-- Muncul setelah 1x login gagal -->
+                <p id="forgotPassPrompt" style="text-align:center; margin-top:15px; font-size:0.8rem; display:none;">
+                    Lupa Password? <a href="javascript:void(0)" onclick="toggleAuthMode('reset')" style="color:#d32f2f; font-weight:bold; text-decoration:none;">Reset di sini</a>
+                </p>
+
+                <p style="text-align:center; margin-top:10px; font-size:0.8rem; color:#666;">
+                    Belum punya password? <a href="javascript:void(0)" onclick="toggleAuthMode('signup')" style="color:#0d47a1; font-weight:bold; text-decoration:none;">Sign In Sekarang</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- SIGNUP VIEW -->
+        <div id="signupView" style="display:none;">
+            <div class="auth-container">
+                <input type="text" id="regIdStaff" class="search-input" placeholder="Masukkan ID Staff">
+                <input type="text" id="regIdErajaya" class="search-input" placeholder="Masukkan ID Erajaya">
+                <input type="password" id="regPass" class="search-input" placeholder="Buat Password Baru">
+                <button id="btnSignup" class="btn-action" onclick="handleSignup()" style="background:#2e7d32;">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Sign In
+                </button>
+                <p style="text-align:center; margin-top:15px; font-size:0.8rem; color:#666;">
+                    Sudah punya akun? <a href="javascript:void(0)" onclick="toggleAuthMode('login')" style="color:#0d47a1; font-weight:bold; text-decoration:none;">Kembali ke Login</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- RESET PASSWORD VIEW -->
+        <div id="resetView" style="display:none;">
+            <div class="auth-container">
+                <h3 style="text-align:center; color:#d32f2f; margin-bottom:8px; font-size:1.1rem;">🔑 Reset Password</h3>
+                <p style="text-align:center; font-size:0.78rem; color:#64748b; margin-bottom:15px; line-height:1.5;">
+                    Masukkan ID Staff dan ID Erajaya kamu untuk verifikasi, lalu buat password baru.
+                </p>
+                <input type="text" id="resetIdStaff" class="search-input" placeholder="Masukkan ID Staff">
+                <input type="text" id="resetIdErajaya" class="search-input" placeholder="Masukkan ID Erajaya">
+                <input type="password" id="resetPass" class="search-input" placeholder="Buat Password Baru">
+                <button id="btnReset" class="btn-action" onclick="handleResetPassword()" style="background:#d32f2f;">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i>Reset Password
+                </button>
+                <p style="text-align:center; margin-top:15px; font-size:0.8rem; color:#666;">
+                    Ingat password Anda? <a href="javascript:void(0)" onclick="toggleAuthMode('login')" style="color:#0d47a1; font-weight:bold; text-decoration:none;">Kembali ke Login</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- PROFILE VIEW -->
+        <div id="profileView" style="display:none;">
+            <div class="profile-card">
+                <h3 id="profName" style="color:#0d47a1; margin-bottom:10px;">-</h3>
+                <div class="prof-detail">
+                    <p><strong>ID Staff:</strong>    <span id="profIdStaff">-</span></p>
+                    <p><strong>ID Erajaya:</strong>  <span id="profIdEra">-</span></p>
+                    <p><strong>Position:</strong>    <span id="profPosition">-</span></p>
+                    <p><strong>Gudang:</strong>      <span id="profGudang">-</span></p>
+                </div>
+
+                <!-- Statistik Harian: kurva naik/turun pengiriman staff yang login -->
+                <div id="statistikHarianSection" style="margin-top:20px;">
+                    <h4 style="font-size:0.9rem; border-bottom:1px solid #eee; padding-bottom:10px; color:#555;">📈 Statistik Pengiriman Harian</h4>
+
+                    <!-- Pilihan bulan: hanya bulan-bulan yang ada datanya buat staff ini -->
+                    <div class="rank-filter-row" style="margin-bottom:10px;">
+                        <select id="statistikBulanSelect" class="rank-filter-select" style="width:100%;" onchange="onStatistikBulanChange()">
+                            <option value="">Memuat...</option>
+                        </select>
+                    </div>
+
+                    <!-- Pilihan kategori unit: scroll horizontal, sama seperti tab Rank -->
+                    <div class="rank-cat-slider-wrapper">
+                        <button class="cat-arrow-btn" onclick="scrollStatistikCatLeft()"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="rank-categories" id="statistikCatScroll">
+                            <button class="cat-btn active" data-cat="totalUnit" onclick="setStatistikCategory('totalUnit', this)">Keseluruhan</button>
+                            <button class="cat-btn" data-cat="ac" onclick="setStatistikCategory('ac', this)">AC</button>
+                            <button class="cat-btn" data-cat="cctv" onclick="setStatistikCategory('cctv', this)">CCTV</button>
+                            <button class="cat-btn" data-cat="kulkas" onclick="setStatistikCategory('kulkas', this)">Kulkas</button>
+                            <button class="cat-btn" data-cat="tv" onclick="setStatistikCategory('tv', this)">TV</button>
+                            <button class="cat-btn" data-cat="mesinCuci" onclick="setStatistikCategory('mesinCuci', this)">Mesin Cuci</button>
+                            <button class="cat-btn" data-cat="airCooler" onclick="setStatistikCategory('airCooler', this)">Air Cooler</button>
+                            <button class="cat-btn" data-cat="freezer" onclick="setStatistikCategory('freezer', this)">Freezer</button>
+                            <button class="cat-btn" data-cat="speaker" onclick="setStatistikCategory('speaker', this)">Speaker</button>
+                            <button class="cat-btn" data-cat="waterHeater" onclick="setStatistikCategory('waterHeater', this)">Water Heater</button>
+                            <button class="cat-btn" data-cat="dispenser" onclick="setStatistikCategory('dispenser', this)">Dispenser</button>
+                        </div>
+                        <button class="cat-arrow-btn" onclick="scrollStatistikCatRight()"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
+                    <!-- Wrapper luar: yang boleh di-scroll horizontal. Wrapper dalam: lebarnya
+                         diatur otomatis oleh JS supaya setiap tanggal dapat jatah lebar yang cukup
+                         (biar tidak berdesakan kalau 1 bulan datanya sampai 31 hari). -->
+                    <div id="statistikChartScrollWrap" style="position:relative; height:220px; margin-top:10px; overflow-x:auto; overflow-y:hidden;">
+                        <div id="statistikChartInner" style="position:relative; height:100%;">
+                            <canvas id="grafikHarianStaff"></canvas>
+                        </div>
+                    </div>
+                    <p id="statistikHarianKosong" style="text-align:center; color:#888; font-size:0.8rem; display:none; padding:10px 0;">Belum ada data pengiriman untuk periode ini.</p>
+                </div>
+
+                <!-- Sertifikat: hanya tampil jika ada -->
+                <div id="certSection" style="display:none;">
+                    <h4 style="margin-top:20px; font-size:0.9rem; border-bottom:1px solid #eee; padding-bottom:10px; color:#555;">Daftar Sertifikat</h4>
+                    <div id="certList" class="cert-container"></div>
+                </div>
+
+                <!-- Kuesioner: hanya tampil jika ada yang belum dikerjakan -->
+                <div id="kuesionerSection" style="display:none;">
+                    <h4 style="margin-top:20px; font-size:0.9rem; border-bottom:1px solid #eee; padding-bottom:10px; color:#d32f2f;">📋 Kuesioner Wajib</h4>
+                    <div id="kuesionerList"></div>
+                </div>
+
+                <!-- Peringatan: hanya tampil jika ada -->
+                <div id="peringatanSection" style="display:none;">
+                    <h4 style="margin-top:20px; font-size:0.9rem; border-bottom:1px solid #eee; padding-bottom:10px; color:#b91c1c;">⚠️ Peringatan Pelanggaran</h4>
+                    <div id="peringatanList"></div>
+                </div>
+
+                <button id="btnChatAdmin" class="btn-action" onclick="bukaChatAdmin()" style="margin-top:20px; background:#f59e0b; width:100%; display:none;">
+                    <i class="fa-solid fa-spinner fa-spin loading-icon" style="display: none; margin-right: 8px;"></i><i class="fa-solid fa-comments icon-default"></i> Chat Admin Kantor
+                </button>
+
+                <button class="btn-action logout-btn" onclick="logout()" style="margin-top:15px; background:#d32f2f; width:100%;">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- BOTTOM NAVBAR                                                 -->
+    <!-- ============================================================ -->
+    <nav class="navbar">
+        <button class="tab-link active" data-tab="Dashboard" onclick="bukaTab(event, 'Dashboard')"><i class="fa-solid fa-house"></i><span>Home</span></button>
+        <button class="tab-link" data-tab="SmartLibrary" onclick="bukaTab(event, 'SmartLibrary')"><i class="fa-solid fa-book"></i><span>Library</span></button>
+        <button class="tab-link" data-tab="VideoYtTab" onclick="bukaTab(event, 'VideoYtTab')"><i class="fa-solid fa-video"></i><span>Video</span></button>
+        <button class="tab-link" id="navBtnLeader" data-tab="Leader" onclick="bukaTab(event, 'Leader')" style="display:none;"><i class="fa-solid fa-user-shield"></i><span>Leader</span></button>
+        <button class="tab-link" data-tab="Leaderboard" onclick="bukaTab(event, 'Leaderboard')"><i class="fa-solid fa-trophy"></i><span>Rank</span></button>
+        <button class="tab-link" data-tab="Personal" onclick="bukaTab(event, 'Personal')"><i class="fa-solid fa-user"></i><span>User</span></button>
+    </nav>
+
+    <!-- Modal K3 -->
+    <div id="k3Modal" class="modal-wrapper" style="display: none;" onclick="tutupK3Modal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="tutupK3Modal()">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <img id="modalImg" src="" class="modal-img">
+            <p id="modalDesc"></p>
+        </div>
+    </div>
+
+    <!-- Crisp Chat -->
+    <script type="text/javascript">
+      window.$crisp=[];window.CRISP_WEBSITE_ID="c9bb6c18-95c2-4e50-9fda-822a02a1a5c6";
+      (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+      $crisp.push(["do", "chat:hide"]);
+    </script>
+
+    <!-- Chart.js untuk kurva statistik pengiriman harian (tab User) -->
+    <!-- Sebelumnya pakai cdnjs, tapi path versi 4.4.4 di cdnjs sudah 404 (mati) -
+         itu sebabnya Chart selalu undefined dan kurvanya kosong tanpa error. Pindah ke jsdelivr. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
